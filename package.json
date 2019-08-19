@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DB_ENV=production nodemon server/server.js",
+    "start/dev": "DB_ENV=development nodemon server/server.js",
+    "test": "DB_ENV=test jest",
     "build": "webpack",
     "dev": "webpack-dev-server --open --mode development"
   },
@@ -21,19 +23,31 @@
     "type": "git",
     "url": "git+https://github.com/codesmith-alumni/community.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/codesmith-alumni/community/issues"
   },
   "homepage": "https://github.com/codesmith-alumni/community#readme",
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
+  },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "redux": "^4.0.4",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
