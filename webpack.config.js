@@ -9,6 +9,7 @@ module.exports = {
     port: 8080,
     hot: true
   },
+  devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
