@@ -13,7 +13,14 @@ postController.get = (req, res, next) => {
 }
 
 postController.post = (req, res, next) => {
-  let sql = `INSERT INTO posts (user_id, company, content) VALUES ($1, $2, $3)`;
+  const { user_id, company, content } = req.body;
+  const sql = `INSERT INTO posts (user_id, company, content) VALUES ($1, $2, $3) RETURNING *`;
+  const values = [user_id, company, content];
+  pool.query(sql, values)
+    .then(response => {
+      res.status(200);
+      res.send(response.rows[0]);
+    });
 }
 
 module.exports = postController;

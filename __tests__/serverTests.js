@@ -50,10 +50,36 @@ describe('Server Tests', () => {
           });
       });
     });
-    xit('adds new post to the database', () => {
-      return request(server)
-        .post('/posts')
-        .expect()
+    describe('POST /posts', () => {
+      it('returns status code 200', () => {
+        return request(server)
+          .post('/posts')
+          .send({
+            user_id: 1,
+            company: 'codesmith',
+            content: 'here is a post',
+          })
+          .expect('Content-Type', /application\/json/)
+          .expect(200);
+      });
+      it('returns the new post that was added to the database', () => {
+        return request(server)
+          .post('/posts')
+          .send({
+            user_id: 1,
+            company: 'codesmith',
+            content: 'here is a post',
+          })
+          .set('Accept', 'application/json')
+          .expect(response => {
+            // console.log('response', response);
+            const { body } = response;
+            if (typeof body !== 'object') throw new Error('Response should be an object');
+            if (!body.hasOwnProperty('user_id')) throw new Error('Response should have user ID');
+            if (!body.hasOwnProperty('company')) throw new Error('Response should have company');
+            if (!body.hasOwnProperty('content')) throw new Error('Response should have content');
+          });
+      });
     });
   });
 
