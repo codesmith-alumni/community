@@ -8,7 +8,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../client/index.html')));
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../client/dist/index.html')));
 
 // app.get('/login');
 // app.get('/signup');
