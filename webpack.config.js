@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   //...
   entry: "./client/index.js",
+  "dev-server": {
+    port: 8080
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
