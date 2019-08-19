@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+
 const SearchStyles = styled.div`
-  background-color: blue;
+  background-color: lightgreen;
   border: solid;
   height: 150px;
   width: 100%;

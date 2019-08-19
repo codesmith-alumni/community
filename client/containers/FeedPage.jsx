@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { toggle } from "../actions/toggle";
 import   Search   from "../containers/Search.jsx"
+import Feed from "../containers/Feed.jsx"
 
 const FeedPageStyles = styled.div`
-  background-color: blue;
+  background-color: lightcoral;
   height: 150px;
   width: 100%;
   border: solid;
@@ -25,6 +26,7 @@ class FeedPage extends React.Component {
         <FeedPageStyles>
           Feed I am the feed page.
         <Search/>
+        <Feed/>
           <h1>value of toggled: {this.props.posts[0].isOpen.toString()}</h1>
           <button onClick={index => this.props.togglePost(0)}> toggle</button>
         </FeedPageStyles>
