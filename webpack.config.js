@@ -5,8 +5,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   //...
   entry: "./client/index.js",
-  "dev-server": {
-    port: 8080
+  devServer: {
+    port: 8080,
+    hot: true
   },
   output: {
     path: path.resolve(__dirname, "dist"),
