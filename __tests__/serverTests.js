@@ -1,7 +1,12 @@
 const request = require('supertest');
+const { reset, end } = require('../server/db-reset');
 const server = 'http://localhost:3000';
 
 describe('Server Tests', () => {
+  beforeAll((done) => {
+    reset().then(() => done());
+  });
+
   it('returns an HTML file at root /', () => {
     return request(server)
       .get('/')
@@ -85,4 +90,6 @@ describe('Server Tests', () => {
 
   // TODO
   describe('/users endpoint', () => { });
+
+  afterAll(() => end());
 });

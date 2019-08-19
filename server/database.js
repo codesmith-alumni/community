@@ -1,6 +1,6 @@
+require('dotenv').config();
 const { Pool } = require('pg');
-const connectionString = `postgres://yxkooucillvnji:e8ffdca24e5d6a61645ce1533c24ad109f0ba5a7008c117ef306009d6b80cf9a@ec2-54-225-106-93.compute-1.amazonaws.com:5432/deojpi4chtngn
-`;
+const connectionString = process.env.DB_ENV === 'production' ? process.env.DB_PROD : process.env.DB_TEST;
 
 /*
 Database set up with the following SQL:
