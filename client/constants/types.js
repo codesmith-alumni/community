@@ -1,2 +1,1 @@
-export const EXPAND = "EXPAND";
-export const COLLAPSE = "COLLAPSE";
+export const TOGGLE = "TOGGLE";

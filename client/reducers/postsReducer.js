@@ -4,7 +4,14 @@ const defaultStore = [
   {
     company: "Facebook",
     username: "Camera",
-    details: "It went amazing, i got the job!"
+    details: "It went amazing, i got the job!",
+    isOpen: false
+  },
+  {
+    company: "google",
+    username: "Abby",
+    details: "It was super!",
+    isOpen: false
   }
 ];
 
@@ -16,8 +23,11 @@ const defaultStore = [
 
 const postsReducer = (store = defaultStore, action) => {
   switch (action.type) {
-    case types.COLLAPSE:
-      return store;
+    case types.TOGGLE:
+      const storeCopy = JSON.parse(JSON.stringify(store));
+      const index = action.payload;
+      storeCopy[index]["isOpen"] = !storeCopy[index]["isOpen"];
+      return storeCopy;
     default:
       return store;
   }
