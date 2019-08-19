@@ -1,0 +1,32 @@
+{
+  "name": "community",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codesmith-alumni/community.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codesmith-alumni/community/issues"
+  },
+  "homepage": "https://github.com/codesmith-alumni/community#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
+  }
+}
