@@ -24,47 +24,5 @@ const Composer = ({className}) => {
 }
 
 
-// class Composer extends React.Component{
-// constructor(props){
-//   super(props)
-//   this.onChange = this.onChange.bind(this)
-
-// this.state = {
-// text: '',
-// }
-// }
-
-
-// onChange(e){
-
-// console.log('Im onChange')
-// console.log(e.target.value)
-// const text = e.target.value
-// this.setState({text})
-// }
-
-
-// render(){
-// console.log(this.state)
-
-// return(
-
-// <>
-//   Hello world 
-//   onKeyPress
-//   <textarea rows="4" cols="50" value={this.state.text} onChange = {this.onChange}/>
-//   <input type='button' value= "Submit"   ></input>
-
-// </>
-
-
-
-// )
-
-
-// }
-
-
-// }
 
 export default Composer;
