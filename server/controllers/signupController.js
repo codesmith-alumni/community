@@ -1,5 +1,3 @@
-const signupController = {};
-
-signupController.get = (req, res) => {};
+const signupController = (req, res) => {};
 
 module.exports = signupController;

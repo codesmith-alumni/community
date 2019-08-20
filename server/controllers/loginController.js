@@ -5,9 +5,9 @@ const loginController = (req, res) => {
   const user = new User(null, email, password);
 
   user.validateUser().then(res=>{
-    res.cookie
+    res.session.loggedIn = true;
   }).catch(err=>{
-
+    res.status(401).send()
   })
 
   // pull the username off of the request body
