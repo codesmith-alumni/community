@@ -77,7 +77,6 @@ describe('Server Tests', () => {
           })
           .set('Accept', 'application/json')
           .expect(response => {
-            // console.log('response', response);
             const { body } = response;
             if (typeof body !== 'object') throw new Error('Response should be an object');
             if (!body.hasOwnProperty('user_id')) throw new Error('Response should have user ID');

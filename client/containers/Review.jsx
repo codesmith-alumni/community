@@ -12,10 +12,20 @@ const ReviewStyles = styled.div`
 
 
 class Review extends React.Component {
+  constructor(props){
+    super(props)
+
+  }
+
+
+
   render() {
+
     return (
         <ReviewStyles>
-         I am the Reviews
+         Company: {this.props.company}
+         Username: {this.props.username}
+         Details: {this.props.details}
         </ReviewStyles>
 
     );

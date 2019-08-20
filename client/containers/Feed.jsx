@@ -14,10 +14,23 @@ const FeedStyles = styled.div`
 
 
 class Feed extends React.Component {
+constructor(props){
+  super(props)
+
+}
+ 
+
   render() {
+    const contents = []
+    const {posts} = this.props
+    posts.forEach(item => {
+      contents.push(<Review {...item}/>)
+
+    })
+
     return (
         <FeedStyles>
-          <Review/>
+          {contents}
          I am the Feed
         </FeedStyles>
 
