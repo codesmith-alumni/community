@@ -7,7 +7,10 @@ module.exports = {
   entry: "./client/index.js",
   devServer: {
     port: 8080,
-    hot: true
+    hot: true,
+    proxy: {
+      '/posts': 'http://localhost:3000'
+    }
   },
   devtool: "inline-source-map",
   output: {
