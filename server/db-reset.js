@@ -11,13 +11,13 @@ CREATE TABLE users (
   password VARCHAR(50) NOT NULL, 
   karma INTEGER NOT NULL
 );
-
+ 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   company VARCHAR(50),
   content TEXT
-);`
+);`;
 
 function reset() {
   return pool.query(sql);

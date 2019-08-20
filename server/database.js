@@ -1,6 +1,14 @@
 require('dotenv').config();
 const { Pool } = require('pg');
-const connectionString = process.env.DB_ENV === 'production' ? process.env.DB_PROD : process.env.DB_TEST;
+
+const connectionString =
+  process.env.DB_ENV === 'production' ? process.env.DB_PROD : process.env.DB_TEST;
+
+let ssl = false;
+
+if (process.env.DB_ENV === 'production') {
+  ssl = true;
+}
 
 /*
 Database set up with the following SQL:
@@ -25,6 +33,6 @@ View tables with /dt
 
 */
 
-const pool = new Pool({ connectionString, ssl: true });
+const pool = new Pool({ connectionString, ssl });
 
 module.exports = pool;

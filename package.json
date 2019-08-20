@@ -6,6 +6,7 @@
   "scripts": {
     "start": "DB_ENV=production nodemon server/server.js",
     "start/dev": "DB_ENV=development nodemon server/server.js",
+    "config": "DB_ENV=development node server/configure.js",
     "test": "DB_ENV=test jest",
     "build": "webpack",
     "dev": "webpack-dev-server --open --mode development"
