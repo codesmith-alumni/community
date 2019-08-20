@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feed tests render correctly 1`] = `
+<div
+  className="Feed__FeedStyles-sc-132b3eh-0 fXojgU"
+>
+  <div
+    className="Review__ReviewStyles-ga6o6v-0 hUmNth"
+  >
+    Company: 
+    Google
+    Username: 
+    Camera
+    Details: 
+    Crushed it!
+  </div>
+  I am the Feed
+</div>
+`;
+
+exports[`Review tests render correctly 1`] = `
+<div
+  className="Review__ReviewStyles-ga6o6v-0 hUmNth"
+>
+  Company: 
+  Google
+  Username: 
+  Camera
+  Details: 
+  Crushed it!
+</div>
+`;
