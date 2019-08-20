@@ -27,28 +27,42 @@ class FeedPage extends React.Component {
   constructor(props){
     super(props)
 this.state = {}
+this.handleSearch = this.handleSearch.bind(this)
 
   } 
 
+getPosts(searchTerm){
+  const path = searchTerm ? `/posts/${searchTerm}` : `/posts/`
+  
+  fetch(path)
+  .then(response => response.json())
+  .then(response => {
+    const posts = []
+  response.forEach(item => {
+    posts.push({
+      isOpen: false,
+      company: item.company,
+      details:item.content,
+      username:item.user_id
+
+    })
+  })
+   return this.props.updatePosts(posts)})
+  .catch(err => console.log(err))
+}
+
+
+ handleSearch(searchTerm){
+  console.log('handleSearch')
+  this.getPosts(searchTerm)
+
+  }
+
+
+
   componentDidMount(){
 
-    fetch('/posts/')
-      .then(response => response.json())
-      .then(response => {
-        const posts = []
-      response.forEach(item => {
-        posts.push({
-          isOpen: false,
-          company: item.company,
-          details:item.content,
-          username:item.user_id
-
-        })
-     
-      })
-        
-       return this.props.updatePosts(posts)})
-      .catch(err => console.log(err))
+   this.getPosts()
 
   }
  
@@ -58,7 +72,7 @@ this.state = {}
     return (
         <FeedPageStyles>
           Feed I am the feed page.
-        <Search/>
+        <Search handleSearch = {this.handleSearch}/>
         <Composer/>
         <Feed posts = {this.props.posts}/>
           <h1>value of toggled: {this.props.posts[0].isOpen.toString()}</h1>
