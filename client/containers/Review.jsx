@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 const ReviewStyles = styled.div`
-  background-color: lavender;
+  background-color: white;
   height: 150px;
   width: 100%;
   border: solid;

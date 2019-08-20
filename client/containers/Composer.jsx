@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from "styled-components";
 
 const ComposerStyle = styled.div`
-background-color: red;
+border: solid;
 
 `;
 

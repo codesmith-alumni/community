@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Review from "../containers/Review.jsx"
 
 const FeedStyles = styled.div`
-  background-color: lightblue;
   height: 350px;
   width: 100%;
   border: solid;
@@ -30,8 +29,8 @@ constructor(props){
 
     return (
         <FeedStyles>
-          {contents}
          I am the Feed
+          {contents}
         </FeedStyles>
 
     );

@@ -7,10 +7,12 @@ import Feed from "../containers/Feed.jsx"
 import Composer from "../containers/Composer.jsx"
 
 const FeedPageStyles = styled.div`
-  background-color: lightcoral;
-  height: 150px;
-  width: 100%;
-  border: solid;
+  background-color: lightskyblue;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+    padding: 0;
+
 
 `;
 
@@ -75,8 +77,7 @@ getPosts(searchTerm){
         <Search handleSearch = {this.handleSearch}/>
         <Composer/>
         <Feed posts = {this.props.posts}/>
-          <h1>value of toggled: {this.props.posts[0].isOpen.toString()}</h1>
-          <button onClick={index => this.props.togglePost(0)}> toggle</button>
+        
         </FeedPageStyles>
 
     );
