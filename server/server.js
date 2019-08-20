@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const postController = require('./postController');
+const postController = require('./controllers/postController');
 
 const app = express();
 const port = 3000;
@@ -17,5 +17,8 @@ app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.h
 app.get('/posts/:company', postController.get);
 app.get('/posts/', postController.get);
 app.post('/posts', postController.post);
+
+app.get('/auth/login')
+app.get('/auth/signup')
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
