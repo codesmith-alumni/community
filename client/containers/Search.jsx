@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
@@ -11,17 +11,25 @@ const SearchStyles = styled.div`
 
 `;
 
-class Search extends React.Component {
-  render() {
-    return (
-        <SearchStyles>
-         I am the search box
-        </SearchStyles>
+const Search = ({handleSearch, className}) =>{
+const [search, setSearch] = useState('')
 
-    );
-  }
+const onChange = e =>{
+  setSearch(e.target.value)
 }
 
+
+return(
+
+  <SearchStyles>
+          <input value={search} onChange = {onChange}></input>
+          <input type='button' value='Search' onClick = { () => handleSearch(search)}></input>
+
+        I am the search box
+        </SearchStyles>
+
+)
+}
 
 
 export default Search;
