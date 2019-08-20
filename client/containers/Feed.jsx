@@ -23,8 +23,8 @@ constructor(props){
   render() {
     const contents = []
     const {posts} = this.props
-    posts.forEach(item => {
-      contents.push(<Review {...item}/>)
+    posts.forEach((item, index) => {
+      contents.push(<Review {...item} key = {index}/>)
 
     })
 
