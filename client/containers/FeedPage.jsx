@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { toggle, updatePosts } from "../actions/actions";
 import   Search   from "../containers/Search.jsx"
 import Feed from "../containers/Feed.jsx"
+import Composer from "../containers/Composer.jsx"
 
 const FeedPageStyles = styled.div`
   background-color: lightcoral;
@@ -58,6 +59,7 @@ this.state = {}
         <FeedPageStyles>
           Feed I am the feed page.
         <Search/>
+        <Composer/>
         <Feed posts = {this.props.posts}/>
           <h1>value of toggled: {this.props.posts[0].isOpen.toString()}</h1>
           <button onClick={index => this.props.togglePost(0)}> toggle</button>
