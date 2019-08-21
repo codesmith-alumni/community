@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import NotFound from './components/NotFound.jsx';
@@ -13,7 +13,7 @@ render(
     <Router>
       {/* <Route path="*" component={Nav} /> */}
       <Switch>
-        <Route exact path="*" component={SignUp} />
+        <Route exact path="/" component={SignUp} />
         <Route path="/SignUp" component={SignUp} />
         <Route path="/SignIn" component={SignIn} />
         <Route component={NotFound} />
