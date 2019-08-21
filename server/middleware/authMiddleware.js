@@ -1,5 +1,4 @@
 const authMiddleware = (req, res, next) => {
-  console.log('in auth middleware');
   // check the session... if it is good, great!
   const safeRoutes = ['/', '/auth/login', '/signup'];
   if (!req.session.loggedIn && !safeRoutes.includes(req.originalUrl)) {

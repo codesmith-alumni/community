@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 
-const SearchStyles = styled.div`
-  background-color: lightgreen;
+  const SearchStyles = styled.div`
+
   border: solid;
-  height: 150px;
+  height: 50px;
   width: 100%;
 
 `;
@@ -22,10 +22,11 @@ const onChange = e =>{
 return(
 
   <SearchStyles>
+  Search Stream
+  (Search is case sensitive)
           <input value={search} onChange = {onChange}></input>
           <input type='button' value='Search' onClick = { () => handleSearch(search)}></input>
 
-        I am the search box
         </SearchStyles>
 
 )

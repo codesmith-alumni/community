@@ -16,6 +16,7 @@ const loginController = (req, res) => {
       }
       req.session.loggedIn = true;
       req.session.user = userInfo.name;
+      req.session.user_id = userInfo.id
       res.status(200).send();
     })
     .catch(err => {
