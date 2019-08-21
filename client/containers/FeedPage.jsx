@@ -68,7 +68,7 @@ sendReview(reviewCompany, reviewText){
   console.log(reviewCompany, reviewText)
 const path = reviewCompany && reviewText ? `/posts` : `/posts/`
 fetch(path, {method: 'POST'})
-.then(response => console.log(response.json()))
+.then(response => )
 .then(getPosts)
 .catch(err => console.log(err))
 }
