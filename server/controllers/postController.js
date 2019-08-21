@@ -9,7 +9,8 @@ postController.get = (req, res, next) => {
   pool.query(sql)
     .then(response => {
       res.send(response.rows);
-    });
+    })
+    .catch(err => console.err(err));
 }
 
 postController.post = (req, res, next) => {
