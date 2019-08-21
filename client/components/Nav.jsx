@@ -27,17 +27,21 @@ const NavMenuEntry = styled.li`
   border-right: 1px solid #ccc;
 `;
 
-const Nav = ({ classNames }) => (
-  <>
-    <NavStyles id="Nav">
-      <NavTitle>STREAM</NavTitle>
-      <NavMenuEntry>
-        <button type="button">
-          <Link to="/SignOut">SignOut</Link>
-        </button>
-      </NavMenuEntry>
-    </NavStyles>
-  </>
-);
+const Nav = ({ classNames, location }) => {
+  return (
+    <>
+      <NavStyles id="Nav">
+        <NavTitle>STREAM</NavTitle>
+        <NavMenuEntry>
+          {location.pathname === '/home' &&
+            <button type="button">
+              <Link to="/SignOut">Sign out</Link>
+            </button>
+          }
+        </NavMenuEntry>
+      </NavStyles>
+    </>
+  )
+};
 
 export default Nav;
