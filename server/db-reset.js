@@ -9,7 +9,8 @@ CREATE TABLE users (
   name VARCHAR(50), 
   email VARCHAR(50) UNIQUE NOT NULL, 
   password VARCHAR(50) NOT NULL, 
-  karma INTEGER NOT NULL
+  karma INTEGER NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE posts (
@@ -20,11 +21,13 @@ CREATE TABLE posts (
 );`
 
 function reset() {
-  return pool.query(sql);
+  return pool.query(sql)
+  // .then((response) => console.log('DB successfully reset', response));
 }
 
 function end() {
-  pool.end();
+  pool.end()
+  // .then(() => console.log('Ended DB pool'));
 }
 
 module.exports = { reset, end };

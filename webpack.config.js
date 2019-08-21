@@ -2,13 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // ...
   entry: './client/index.js',
   devServer: {
     port: 8080,
     hot: true,
     proxy: {
-      '/posts': 'http://localhost:3000',
+      '/': 'http://localhost:3000',
     },
   },
   devtool: 'inline-source-map',
