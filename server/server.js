@@ -19,7 +19,7 @@ app.use(
 
 app.use(
   session({
-    secret: "community cat",
+    secret: "communitycat",
     cookie: { maxAge: 60000 },
     resave: false,
     saveUnititialized: true
@@ -32,7 +32,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  console.log("inside of root controller");
   res.sendFile(path.resolve(__dirname, "../dist/index.html"));
 });
 

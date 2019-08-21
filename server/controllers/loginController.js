@@ -5,7 +5,6 @@ const User = require("../models/User");
 
 const loginController = (req, res) => {
   const { email, password } = req.body;
-  console.log(password, email);
   const user = new User("User", email, password);
 
   user
