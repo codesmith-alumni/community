@@ -26,10 +26,12 @@ app.use(
   })
 );
 
+app.use(authMiddleware);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", authMiddleware, (req, res) => {
+app.get("/", (req, res) => {
   console.log("inside of root controller");
   res.sendFile(path.resolve(__dirname, "../dist/index.html"));
 });

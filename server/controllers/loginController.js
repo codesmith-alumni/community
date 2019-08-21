@@ -1,5 +1,8 @@
 const User = require("../models/User");
 
+// sends an error code if no user found, otherwise sends user info and sets the session
+// from there, send the requests properly
+
 const loginController = (req, res) => {
   const { email, password } = req.body;
   console.log(password, email);
@@ -8,14 +11,13 @@ const loginController = (req, res) => {
   user
     .validateUser()
     .then(result => {
-      req.session.loggedIn = true;
       const userInfo = result.rows[0];
       if (userInfo === undefined) {
         res.status(404).send("No matching user exists.");
       }
-      delete userInfo["password"];
-      delete userInfo["id"];
-      res.status(200).send(JSON.stringify(userInfo));
+      req.session.loggedIn = true;
+      req.session.user = userInfo.name;
+      res.status(200).send();
     })
     .catch(err => {
       console.log(err);
