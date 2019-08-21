@@ -7,7 +7,7 @@ const connectionString =
 
 let ssl = false;
 if (process.env.DB_ENV === "production") {
-  sll = true;
+  ssl = true;
 }
 
 /*

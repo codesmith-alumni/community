@@ -41,6 +41,13 @@ app.get("/", (req, res) => {
 // app.get('/login');
 // app.get('/signup');
 
+app.get("/isLoggedIn", (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.send(JSON.stringify({ isLoggedIn: false }));
+  }
+  return res.send(JSON.stringify({ isLoggedIn: true, user: req.session.user }));
+});
+
 app.get("/posts/:company", postController.get);
 app.get("/posts/", postController.get);
 app.post("/posts", postController.post);
