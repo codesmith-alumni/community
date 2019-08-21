@@ -2,8 +2,8 @@
 const pool = require("../database");
 class User {
   constructor(name, email, password) {
-    if (!name || !email || !password) {
-      throw new Error("Username, email, and password must all have values");
+    if (!email || !password) {
+      throw new Error("Email, and password must all have values");
     }
     this.email = email;
     this.name = name;
@@ -26,7 +26,8 @@ class User {
     SELECT * FROM users WHERE (email = $1) AND (password = $2)
     `;
     const values = [this.email, this.password];
-    return pool.query(sql, values);
+    return pool.query("SELECT * FROM users");
+    // return pool.query(sql, values);
   }
 
   /**

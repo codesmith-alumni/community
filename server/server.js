@@ -28,10 +28,6 @@ app.use(
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  console.log("hitting the server");
-  next();
-});
 
 app.get("/", authMiddleware, (req, res) => {
   console.log("inside of root controller");
