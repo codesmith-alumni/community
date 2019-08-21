@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const ReviewStyles = styled.div`
   background-color: white;
-  height: 150px;
+  height: 50px;
   width: 100%;
   border: solid;
 

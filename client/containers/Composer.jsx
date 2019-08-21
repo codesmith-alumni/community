@@ -8,17 +8,34 @@ border: solid;
 
 
 
-const Composer = ({className}) => {
+const Composer = ({handleReview, className}) => {
   const [text, setText] = useState('');
+  const [company, setCompany] = useState('')
 
-  const onChange = (e) => {
+  const onReviewChange = (e) => {
     setText(e.target.value)
+  }
+
+  const onCompanyChange = (e) => {
+    setCompany(e.target.value)
+  }
+
+  const onClick = (e) => {
+    setCompany(e.target.value)
+    console.log(company)
   }
 
   return (
     <ComposerStyle>
-      <textarea rows="4" cols="50" placeholder = 'Review goes here' value={text} onChange = {onChange}/>
-      <input type='button' value= "Submit"   ></input> 
+      <label htmlFor= "Company"> Company </label>
+      <br/>
+      <input id = "Company" value = {company} onChange = {onCompanyChange}></input>
+      <br/>
+      <label htmlFor= "Review"> Review </label>
+      <br/>
+      <textarea id = "Review" rows="4" cols="50" placeholder = 'Review goes here' value={text} onChange = {onReviewChange} />
+      <br/>
+      <input type='button' value= "Submit" onClick = { () => handleReview(company,text)} ></input> 
     </ComposerStyle>
   )
 }

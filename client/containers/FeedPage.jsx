@@ -10,10 +10,7 @@ const FeedPageStyles = styled.div`
   background-color: lightskyblue;
   height: 100vh;
   width: 100vw;
-  margin: 0;
-    padding: 0;
-
-
+  
 `;
 
 const mapStateToProps = store => ({
@@ -30,8 +27,15 @@ class FeedPage extends React.Component {
     super(props)
 this.state = {}
 this.handleSearch = this.handleSearch.bind(this)
-
+this.handleReview = this.handleReview.bind(this)
   } 
+
+
+handleSearch(searchTerm){
+    console.log('handleSearch')
+    this.getPosts(searchTerm)
+}
+
 
 getPosts(searchTerm){
   const path = searchTerm ? `/posts/${searchTerm}` : `/posts/`
@@ -53,29 +57,34 @@ getPosts(searchTerm){
   .catch(err => console.log(err))
 }
 
+handleReview(reviewCompany,reviewText){
+  console.log('handleReview')
+  this.sendReview(reviewCompany, reviewText)
+}
 
- handleSearch(searchTerm){
-  console.log('handleSearch')
-  this.getPosts(searchTerm)
+//Need to include user_id in body in fetch request below -> body: JSON.stringify()
 
-  }
-
+sendReview(reviewCompany, reviewText){
+  console.log(reviewCompany, reviewText)
+const path = reviewCompany && reviewText ? `/posts` : `/posts/`
+fetch(path, {method: 'POST'})
+.then(response => console.log(response.json()))
+.then(getPosts)
+.catch(err => console.log(err))
+}
 
 
   componentDidMount(){
-
    this.getPosts()
-
   }
  
 
   render() {
-
     return (
         <FeedPageStyles>
-          Feed I am the feed page.
+          Stream
         <Search handleSearch = {this.handleSearch}/>
-        <Composer/>
+        <Composer handleReview ={this.handleReview}/>
         <Feed posts = {this.props.posts}/>
         
         </FeedPageStyles>

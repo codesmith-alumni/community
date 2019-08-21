@@ -13,7 +13,7 @@ render(
     <Router>
       {/* <Route path="*" component={Nav} /> */}
       <Switch>
-        <Route exact path="*" component={SignUp} />
+        <Route exact path="/" component={App} />
         <Route path="/SignUp" component={SignUp} />
         <Route path="/SignIn" component={SignIn} />
         <Route component={NotFound} />
