@@ -99,6 +99,6 @@ describe('Server Tests', () => {
   });
 
   afterAll(() => {
-    end() //.then(() => done());
+    end()
   });
 });

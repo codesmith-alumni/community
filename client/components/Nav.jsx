@@ -28,7 +28,7 @@ const NavMenuEntry = styled.li`
 `;
 
 const Nav = ({ classNames }) => (
-  <React.Fragment>
+  <>
     <NavStyles id="Nav">
       <NavTitle>STREAM</NavTitle>
       <NavMenuEntry>
@@ -37,7 +37,7 @@ const Nav = ({ classNames }) => (
         </button>
       </NavMenuEntry>
     </NavStyles>
-  </React.Fragment>
+  </>
 );
 
 export default Nav;

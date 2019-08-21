@@ -1,3 +1,4 @@
+// const User = require('../models/User');
 const pool = require('../database');
 const userController = {};
 
@@ -8,7 +9,7 @@ userController.create = (req, res) => {
   const values = [name, email, password, karma];
   pool.query(sql, values)
     .then((response) => {
-      console.log(response);
+      req.session.loggedIn = true;
       res.status(200).send(JSON.stringify({
         id: response.rows[0].id,
         name: response.rows[0].name,
@@ -17,7 +18,7 @@ userController.create = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(400).send('Error: User already exists');
+      res.status(400).send(JSON.stringify('Error: User already exists'));
     });
 };
 

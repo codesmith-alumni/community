@@ -1,23 +1,23 @@
-require("dotenv").config();
-const { Pool } = require("pg");
-const connectionString =
-  process.env.DB_ENV === "production"
-    ? process.env.DB_PROD
-    : process.env.DB_TEST;
+require('dotenv').config();
+const { Pool } = require('pg');
 
-let ssl = false;
-if (process.env.DB_ENV === "production") {
-  sll = true;
-}
+const connectionString = process.env.DB_ENV === 'production'
+  ? process.env.DB_PROD
+  : process.env.DB_TEST;
+
+// let ssl = false;
+// if (process.env.DB_ENV === 'production') {
+//   ssl = true;
+// }
 
 /*
 Database set up with the following SQL:
 
 CREATE TABLE users (
-  id SERIAL PRIMARY KEY, 
-  name VARCHAR(50), 
-  email VARCHAR(50) UNIQUE NOT NULL, 
-  password VARCHAR(50) NOT NULL, 
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(50) NOT NULL,
   karma INTEGER NOT NULL
 );
 
@@ -33,6 +33,6 @@ View tables with /dt
 
 */
 
-const pool = new Pool({ connectionString, ssl });
+const pool = new Pool({ connectionString, ssl: true });
 
 module.exports = pool;
