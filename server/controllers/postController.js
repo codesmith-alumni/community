@@ -1,4 +1,4 @@
-const pool = require('./database');
+const pool = require('../database');
 const postController = {};
 
 postController.get = (req, res, next) => {
