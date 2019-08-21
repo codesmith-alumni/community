@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const postController = require('./postController');
+const postController = require('./controllers/postController');
+const userController = require('./controllers/userController');
 
 const app = express();
 const port = 3000;
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../dist/index.html')));
 
 // app.get('/login');
-// app.get('/signup');
+
+app.post('/signup', userController.create);
 
 app.get('/posts/:company', postController.get);
 app.get('/posts/', postController.get);
