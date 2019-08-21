@@ -7,10 +7,10 @@ import Feed from '../containers/Feed.jsx';
 import Composer from './Composer.jsx';
 
 const FeedPageStyles = styled.div`
-  background-color: lightcoral;
-  height: 150px;
-  width: 100%;
-  border: solid;
+  background-color: lightskyblue;
+  height: 100vh;
+  width: 100vw;
+  
 `;
 
 const mapStateToProps = store => ({
@@ -23,51 +23,74 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class FeedPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.handleSearch = this.handleSearch.bind(this);
-  }
+  constructor(props){
+    super(props)
+this.state = {}
+this.handleSearch = this.handleSearch.bind(this)
+this.handleReview = this.handleReview.bind(this)
+  } 
 
-  getPosts(searchTerm) {
-    const path = searchTerm ? `/posts/${searchTerm}` : `/posts/`;
 
-    fetch(path)
-      .then(response => response.json())
-      .then(response => {
-        const posts = [];
-        response.forEach(item => {
-          posts.push({
-            isOpen: false,
-            company: item.company,
-            details: item.content,
-            username: item.user_id,
-          });
-        });
-        return this.props.updatePosts(posts);
-      })
-      .catch(err => console.log(err));
-  }
+handleSearch(searchTerm){
+    console.log('handleSearch')
+    this.getPosts(searchTerm)
+}
+
+
+getPosts(searchTerm){
+  const path = searchTerm ? `/posts/${searchTerm}` : `/posts/`
+  
+  fetch(path)
+  .then(response => response.json())
+  .then(response => {
+    const posts = []
+  response.forEach(item => {
+    posts.push({
+      isOpen: false,
+      company: item.company,
+      details:item.content,
+      username:item.user_id
+
+    })
+  })
+   return this.props.updatePosts(posts)})
+  .catch(err => console.log(err))
+}
+
+handleReview(reviewCompany,reviewText){
+  console.log('handleReview')
+  this.sendReview(reviewCompany, reviewText)
+}
+
+//Need to include user_id in body in fetch request below -> body: JSON.stringify()
+
+sendReview(reviewCompany, reviewText, getPosts){
+  console.log(reviewCompany, reviewText)
+const path = reviewCompany && reviewText ? `/posts` : `/posts/`
+fetch(path, {method: 'POST', body: JSON.stringify({company:reviewCompany, content:reviewText})})
+.then(getPosts)
+.catch(err => console.log(err))
+}
 
   handleSearch(searchTerm) {
     console.log('handleSearch');
     this.getPosts(searchTerm);
   }
 
-  componentDidMount() {
-    this.getPosts();
+  componentDidMount(){
+   this.getPosts()
   }
 
   render() {
     return (
-      <FeedPageStyles>
-        Feed I am the feed page.
-        <Search handleSearch={this.handleSearch} />
-        <Composer />
-        <Feed posts={this.props.posts} />
-        <h1>value of toggled: {this.props.posts[0].isOpen.toString()}</h1>
-        <button onClick={index => this.props.togglePost(0)}> toggle</button>
-      </FeedPageStyles>
+        <FeedPageStyles>
+          Stream
+        <Search handleSearch = {this.handleSearch}/>
+        <Composer handleReview ={this.handleReview}/>
+        <Feed posts = {this.props.posts}/>
+        
+        </FeedPageStyles>
+
     );
   }
 }
