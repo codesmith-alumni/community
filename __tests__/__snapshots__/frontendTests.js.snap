@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Composer tests render correctly 1`] = `
+<div
+  className="Composer__ComposerStyle-sc-1tf1xny-0 dhhfTk"
+>
+  <textarea
+    cols="50"
+    onChange={[Function]}
+    placeholder="Review goes here"
+    rows="4"
+    value=""
+  />
+  <input
+    type="button"
+    value="Submit"
+  />
+</div>
+`;
+
+exports[`Feed tests render correctly 1`] = `
+<div
+  className="Feed__FeedStyles-sc-132b3eh-0 fXojgU"
+>
+  <div
+    className="Review__ReviewStyles-ga6o6v-0 hUmNth"
+  >
+    Company: 
+    Google
+    Username: 
+    Camera
+    Details: 
+    Crushed it!
+  </div>
+  I am the Feed
+</div>
+`;
+
+exports[`Review tests render correctly 1`] = `
+<div
+  className="Review__ReviewStyles-ga6o6v-0 hUmNth"
+>
+  Company: 
+  Google
+  Username: 
+  Camera
+  Details: 
+  Crushed it!
+</div>
+`;
