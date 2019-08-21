@@ -1,5 +1,7 @@
 const express = require("express");
 const session = require("express-session");
+const RedisStore = require("connect-redis")(session);
+const RedisDB = require("./reddis-database");
 const path = require("path");
 const bodyParser = require("body-parser");
 const postController = require("./controllers/postController");
@@ -19,6 +21,7 @@ app.use(
 
 app.use(
   session({
+    store: new RedisStore({ client: RedisDB }),
     secret: "communitycat",
     cookie: { maxAge: 60000 },
     resave: false,

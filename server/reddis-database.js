@@ -14,16 +14,18 @@ client = redis.createClient({
   // }
 });
 
-client.set("some-key", "42", function(err) {
-  if (err) {
-    throw err; /* in production, handle errors more gracefully */
-  } else {
-    client.get("some-key", function(err, value) {
-      if (err) {
-        throw err;
-      } else {
-        console.log(value);
-      }
-    });
-  }
-});
+module.exports = client;
+
+// client.set("some-key", "42", function(err) {
+//   if (err) {
+//     throw err; /* in production, handle errors more gracefully */
+//   } else {
+//     client.get("some-key", function(err, value) {
+//       if (err) {
+//         throw err;
+//       } else {
+//         console.log(value);
+//       }
+//     });
+//   }
+// });
