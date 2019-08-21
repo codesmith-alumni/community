@@ -5,10 +5,7 @@ export const toggle = index => ({
   payload: index
 });
 
-
 export const updatePosts = posts => ({
   type: types.UPDATE_POSTS,
-  payload: posts,
-  
-
-})
+  payload: posts
+});

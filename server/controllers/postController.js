@@ -1,4 +1,4 @@
-const pool = require('./database');
+const pool = require('../database');
 const postController = {};
 
 postController.get = (req, res, next) => {
@@ -13,7 +13,8 @@ postController.get = (req, res, next) => {
 }
 
 postController.post = (req, res, next) => {
-  const { user_id, company, content } = req.body;
+  const { company, content } = req.body;
+  const { user_id } = req.session;
   const sql = `INSERT INTO posts (user_id, company, content) VALUES ($1, $2, $3) RETURNING *`;
   const values = [user_id, company, content];
   pool.query(sql, values)
