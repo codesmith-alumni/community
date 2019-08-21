@@ -11,9 +11,9 @@ const app = express();
 const port = 3000;
 
 app.use(
-  "/dist",
   express.static(path.resolve(__dirname, "../dist"), {
-    extensions: ["html", "css", "js"]
+    extensions: ["html", "css", "js"],
+    index: false
   })
 );
 
