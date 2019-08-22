@@ -1,33 +1,17 @@
-const pool = require('./database');
-
-const sql = `
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS posts;
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY, 
-  name VARCHAR(50), 
-  email VARCHAR(50) UNIQUE NOT NULL, 
-  password VARCHAR(50) NOT NULL, 
-  karma INTEGER NOT NULL,
-  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE posts (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER NOT NULL,
-  company VARCHAR(50),
-  content TEXT
-);`
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var database_1 = require("./database");
+var sql = "\nDROP TABLE IF EXISTS users;\nDROP TABLE IF EXISTS posts;\n\nCREATE TABLE users (\n  id SERIAL PRIMARY KEY, \n  name VARCHAR(50), \n  email VARCHAR(50) UNIQUE NOT NULL, \n  password VARCHAR(50) NOT NULL, \n  karma INTEGER NOT NULL,\n  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\n);\n\nCREATE TABLE posts (\n  id SERIAL PRIMARY KEY,\n  user_id INTEGER NOT NULL,\n  company VARCHAR(50),\n  content TEXT\n);";
 function reset() {
-  return pool.query(sql)
-  // .then((response) => console.log('DB successfully reset', response));
+    return database_1.default.query(sql);
+    // .then((response) => console.log('DB successfully reset', response));
 }
-
 function end() {
-  pool.end()
-  // .then(() => console.log('Ended DB pool'));
+    database_1.default.end();
+    // .then(() => console.log('Ended DB pool'));
 }
-
-module.exports = { reset, end };
+module.exports = {
+    reset: reset,
+    end: end
+};
+//# sourceMappingURL=db-reset.js.map
