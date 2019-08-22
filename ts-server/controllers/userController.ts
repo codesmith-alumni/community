@@ -1,8 +1,6 @@
 // const User = require('../models/User');
 const pool = require('../database');
-const userController: {create: any} = {
-  create: null
-};
+const userController: any = {};
 
 userController.create = (req, res) => {
   const {name, email, password} = req.body;

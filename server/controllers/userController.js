@@ -2,9 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // const User = require('../models/User');
 var pool = require('../database');
-var userController = {
-    create: null
-};
+var userController = {};
 userController.create = function (req, res) {
     var _a = req.body, name = _a.name, email = _a.email, password = _a.password;
     var karma = 0;

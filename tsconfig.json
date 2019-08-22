@@ -6,6 +6,20 @@
     "outDir": "server",
     "allowJs": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "__tests__",
+    "client",
+    "coverage",
+    ".env",
+    ".eslistrc.js",
+    ".gitignore",
+    "package.json",
+    "package-lock.json",
+    "README.md",
+    "tsconfig.json",
+    "webpack.config.js"
+  ],
   "include": ["ts-server/**/*"]
 }

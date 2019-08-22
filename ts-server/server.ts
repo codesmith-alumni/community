@@ -5,10 +5,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const RedisDB = require('./reddis-database');
 import postController from './controllers/postController';
-import signupController from './controllers/signupController';
-const loginController = require('./controllers/loginController');
+// import signupController from './controllers/signupController';
+import loginController from './controllers/loginController';
 import authMiddleware from './middleware/authMiddleware';
-const userController = require('./controllers/userController');
+import userController from './controllers/userController';
 
 const app = express();
 const port = 3000;

@@ -7,9 +7,10 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var RedisDB = require('./reddis-database');
 var postController_1 = require("./controllers/postController");
-var loginController = require('./controllers/loginController');
+// import signupController from './controllers/signupController';
+var loginController_1 = require("./controllers/loginController");
 var authMiddleware_1 = require("./middleware/authMiddleware");
-var userController = require('./controllers/userController');
+var userController_1 = require("./controllers/userController");
 var app = express();
 var port = 3000;
 app.use(bodyParser.json());
@@ -35,7 +36,7 @@ app.get('/isLoggedIn', function (req, res) {
 app.get('/posts/:company', postController_1.default.get);
 app.get('/posts/', postController_1.default.get);
 app.post('/posts', postController_1.default.post);
-app.post('/auth/login', loginController);
-app.post('/auth/signup', userController.create);
+app.post('/auth/login', loginController_1.default);
+app.post('/auth/signup', userController_1.default.create);
 app.listen(port, function () { return console.log("Listening on port " + port); });
 //# sourceMappingURL=server.js.map
