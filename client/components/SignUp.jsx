@@ -26,29 +26,46 @@ const SignUp = ({ className, history }) => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const displayErrorMessage = () => {
-    setError('User already exists');
+  const displayErrorMessage = (status) => {
+    switch (status) {
+      case 404:
+        setError('No matching user exists.');
+        break;
+      case 401:
+        setError('Validation failed.');
+        break;
+      case 400:
+        setError('User already exists');
+        break;
+      default:
+        setError('Validation failed.');
+        break;
+    }
   }
 
   const handleSignup = () => {
-    fetch('/signup', {
+    fetch('/auth/signup', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => {
-        if (response.status === 400) throw 'User already exists';
-        return response.json()
+        if (response.status === 200) history.push('/home');
+        else displayErrorMessage(response.status);
       })
-      .then(() => history.push('/home'))
-      .catch(err => {
-        if (err === 'User already exists') displayErrorMessage();
-        else console.error(err)
-      });
+      .catch(err => console.error(err));
   }
 
   const handleLogin = () => {
-    console.log('logging in');
+    fetch('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => {
+        if (response.status === 200) history.push('/home');
+        else displayErrorMessage(response.status);
+      })
   }
 
   return (
@@ -66,7 +83,7 @@ const SignUp = ({ className, history }) => {
       <br />
       <input type="button" value={screen === 'signup' ? 'Signup' : 'Login'} onClick={screen === 'signup' ? handleSignup : handleLogin} />
       <br />
-      <span>{error !== '' && 'This user already exists'}</span>
+      <span>{error !== '' && error}</span>
       <br />
       {screen === 'signup' && <a onClick={() => setScreen('login')}>I already have an account</a>}
       {screen === 'login' && <a onClick={() => setScreen('signup')}>Make an account</a>}

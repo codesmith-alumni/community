@@ -41,15 +41,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
-// app.get('/login');
-
-app.post('/signup', userController.create);
-
 app.get('/posts/:company', postController.get);
 app.get('/posts/', postController.get);
 app.post('/posts', postController.post);
 
 app.post('/auth/login', loginController);
-// app.post('/auth/signup', signupController);
+app.post('/auth/signup', userController.create);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
