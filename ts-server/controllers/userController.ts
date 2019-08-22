@@ -1,5 +1,5 @@
 // const User = require('../models/User');
-const pool = require('../database');
+import pool from '../database';
 const userController: any = {};
 
 userController.create = (req, res) => {

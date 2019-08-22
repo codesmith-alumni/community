@@ -32,6 +32,6 @@ View tables with /dt
 
 */
 
-const pool = new Pool({connectionString, ssl: true});
+const pool = new Pool({connectionString, ssl});
 
 export default pool;

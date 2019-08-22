@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var pool = require('../database');
+var database_1 = require("../database");
 var postController = {};
 postController.get =
     function (req, res, next) {
@@ -9,7 +9,7 @@ postController.get =
         if (company)
             sql += " WHERE company LIKE '%" + company + "%'";
         sql += ";";
-        pool.query(sql)
+        database_1.default.query(sql)
             .then(function (response) {
             res.send(response.rows);
         })
@@ -20,7 +20,7 @@ postController.post = function (req, res, next) {
     var user_id = req.session.user_id;
     var sql = "INSERT INTO posts (user_id, company, content) VALUES ($1, $2, $3) RETURNING *";
     var values = [user_id, company, content];
-    pool.query(sql, values).then(function (response) {
+    database_1.default.query(sql, values).then(function (response) {
         res.status(200);
         res.send(response.rows[0]);
     });

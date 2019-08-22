@@ -31,6 +31,6 @@ Access in the CLI with psql [URI]
 View tables with /dt
 
 */
-var pool = new Pool({ connectionString: connectionString, ssl: true });
+var pool = new Pool({ connectionString: connectionString, ssl: ssl });
 exports.default = pool;
 //# sourceMappingURL=database.js.map
