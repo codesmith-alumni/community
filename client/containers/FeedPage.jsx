@@ -41,7 +41,7 @@ class FeedPage extends React.Component {
             isOpen: false,
             company: item.company,
             details: item.content,
-            username: item.user_id
+            username: item.name
 
           })
         })

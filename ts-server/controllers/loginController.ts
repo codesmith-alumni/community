@@ -4,25 +4,32 @@ import User from '../models/User';
 // session
 // from there, send the requests properly
 
-const loginController = (req, res) => {
-  const {email, password} = req.body;
+const loginController: any = {};
+
+loginController.login = (req, res) => {
+  const { email, password } = req.body;
   const user = new User('User', email, password);
 
   user.validateUser()
-      .then(result => {
-        const userInfo = result.rows[0];
-        if (userInfo === undefined) {
-          res.status(404).send('No matching user exists.');
-        }
-        req.session.loggedIn = true;
-        req.session.user = userInfo.name;
-        req.session.user_id = userInfo.id
-        res.status(200).send();
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(401).send('Validation failed.');
-      });
+    .then(result => {
+      const userInfo = result.rows[0];
+      if (userInfo === undefined) {
+        res.status(404).send('No matching user exists.');
+      }
+      req.session.loggedIn = true;
+      req.session.user = userInfo.name;
+      req.session.user_id = userInfo.id
+      res.status(200).send();
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(401).send('Validation failed.');
+    });
 };
+
+loginController.logout = (req, res, next) => {
+  req.session.loggedIn = false;
+  res.status(200).send();
+}
 
 export default loginController;
