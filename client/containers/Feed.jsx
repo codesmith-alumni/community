@@ -4,10 +4,9 @@ import styled from "styled-components";
 import Review from "../containers/Review.jsx"
 
 const FeedStyles = styled.div`
-  height: 550px;
-  width: 100%;
-  border: solid;
-  background-color: red;
+  width: 100vw;
+  max-width: 600px;
+  margin: 10px 0px;
 `;
 
 

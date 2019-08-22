@@ -2,13 +2,48 @@ import React, { useState } from 'react'
 import styled from "styled-components";
 
 const ComposerStyle = styled.div`
-border: solid;
-
+  max-width: 600px;
+  margin: 10px 0px;
+  label {
+    font-size: 0.8rem;
+    padding: 5px 0px;
+  }
+  textarea {
+    width: 100vw;
+    max-width: 600px;
+    min-height: 50px;
+    padding: 10px;
+    border: 1px solid #a3a3a3;
+    border-radius: 3px;
+    outline: none;
+    resize: vertical;
+    font-size: 1rem;
+  }
+  div {
+    display: flex; 
+    justify-content: space-between;
+    input {
+      flex-grow: 1;
+      margin-right: 5px;
+      padding: 10px;
+      border: 1px solid #a3a3a3;
+      border-radius: 3px;
+      outline: none;
+      font-size: 1rem;
+   } 
+    button {
+      width: 80px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: #2c4b8e;
+      color: white;
+    }
+  }
 `;
 
 
 
-const Composer = ({handleReview, className}) => {
+const Composer = ({ handleReview, className }) => {
   const [text, setText] = useState('');
   const [company, setCompany] = useState('')
 
@@ -20,22 +55,14 @@ const Composer = ({handleReview, className}) => {
     setCompany(e.target.value)
   }
 
-  const onClick = (e) => {
-    setCompany(e.target.value)
-    console.log(company)
-  }
-
   return (
     <ComposerStyle>
-      <label htmlFor= "Company"> Company </label>
-      <br/>
-      <input id = "Company" value = {company} onChange = {onCompanyChange}></input>
-      <br/>
-      <label htmlFor= "Review"> Review </label>
-      <br/>
-      <textarea id = "Review" rows="4" cols="50" placeholder = 'Review goes here' value={text} onChange = {onReviewChange} />
-      <br/>
-      <input type='button' value= "Submit" onClick = { () => handleReview(company,text)} ></input> 
+      Share a recent interview!
+      <textarea id="Review" placeholder='Need ideas? Share your preparation strategy, examples of questions that you were asked, advice for other interviewees' value={text} onChange={onReviewChange} />
+      <div>
+        <input id="Company" placeholder='What company was it?' value={company} onChange={onCompanyChange}></input>
+        <button onClick={() => handleReview(company, text)} >Share</button>
+      </div>
     </ComposerStyle>
   )
 }

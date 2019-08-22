@@ -6,8 +6,11 @@ const SignUpStyle = styled.div`
   justify-content: center;
   div {
     max-width: 600px;
+    margin: 50px;
     padding: 50px;
     display: flex;
+    /* border: 1px solid #a3a3a3; */
+    border-radius: 20px;
     flex-direction: column;
     align-items: center;
     h1 {
@@ -25,10 +28,11 @@ const SignUpStyle = styled.div`
       input {
         width: 200px;
         padding: 3px;
+        font-size: 1rem;
       }
     }
     button {
-      margin: 5px;
+      margin: 20px 5px;
       padding: 5px 20px;
       border-radius: 10px;
       outline: none;
@@ -36,9 +40,13 @@ const SignUpStyle = styled.div`
       color: white;
       font-size: 1rem;
     }
+    .error {
+      padding: 5px;
+      color: red;
+    }
     a {
         cursor: pointer;
-        color: blue;
+        color: skyblue;
     }
   }
 `;
@@ -128,9 +136,9 @@ const SignUp = ({ className, history }) => {
           <input type="password" value={password} onChange={handlePasswordChange} />
         </span>
         <button onClick={screen === 'signup' ? handleSignup : handleLogin} >{screen === 'signup' ? 'Signup' : 'Login'}</button>
-        {screen === 'signup' && <a onClick={() => setScreen('login')}>I already have an account</a>}
-        {screen === 'login' && <a onClick={() => setScreen('signup')}>Make an account</a>}
-        <span>{error !== '' && error}</span>
+        {screen === 'signup' && <a onClick={() => setScreen('login')}>I'm already a member</a>}
+        {screen === 'login' && <a onClick={() => setScreen('signup')}>Not a member? Join today</a>}
+        <span className="error">{error !== '' && error}</span>
       </div>
     </SignUpStyle >
   );
