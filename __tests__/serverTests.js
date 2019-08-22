@@ -74,7 +74,7 @@ describe('Server Tests', () => {
   // TODO
   describe('/signup endpoint', () => {
     it('POST creates a new user if email does not exist', () => request(server)
-      .post('/signup')
+      .post('/auth/signup')
       .send({
         name: 'Abby',
         email: 'abby@teamcharizard.com',

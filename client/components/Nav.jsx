@@ -33,7 +33,7 @@ const Nav = ({ classNames, location }) => {
       <NavStyles id="Nav">
         <NavTitle>STREAM</NavTitle>
         <NavMenuEntry>
-          {location.pathname === '/home' &&
+          {location.pathname !== '/' &&
             <button type="button">
               <Link to="/SignOut">Sign out</Link>
             </button>

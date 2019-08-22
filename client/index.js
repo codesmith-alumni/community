@@ -16,7 +16,6 @@ render(
       <Switch>
         <Route exact path="/" component={SignUp} />
         <Route path="/home" component={FeedPage} />
-        <Route path="/signup" component={SignUp} />
         <Route path="/signout" component={SignOut} />
         <Route component={NotFound} />
       </Switch>
