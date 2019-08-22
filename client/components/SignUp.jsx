@@ -16,57 +16,69 @@ const SignUpStyle = styled.div`
 `;
 
 const SignUp = ({ className, history }) => {
-  const [screen, setScreen] = useState('signup');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [screen, setScreen] = useState("signup");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleNameChange = e => setName(e.target.value);
+  const handleEmailChange = e => setEmail(e.target.value);
+  const handlePasswordChange = e => setPassword(e.target.value);
 
-  const displayErrorMessage = (status) => {
+  const displayErrorMessage = status => {
     switch (status) {
       case 404:
-        setError('No matching user exists.');
+        setError("No matching user exists.");
         break;
       case 401:
-        setError('Validation failed.');
+        setError("Validation failed.");
         break;
       case 400:
-        setError('User already exists');
+        setError("User already exists");
         break;
       default:
-        setError('Validation failed.');
+        setError("Validation failed.");
         break;
     }
-  }
+  };
 
   const handleSignup = () => {
-    fetch('/auth/signup', {
-      method: 'POST',
+    fetch("/auth/signup", {
+      method: "POST",
       body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { "Content-Type": "application/json" }
     })
       .then(response => {
-        if (response.status === 200) history.push('/home');
+        if (response.status === 200) history.push("/home");
         else displayErrorMessage(response.status);
       })
       .catch(err => console.error(err));
-  }
+  };
 
   const handleLogin = () => {
-    fetch('/auth/login', {
-      method: 'POST',
+    fetch("/auth/login", {
+      method: "POST",
       body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then((response) => {
-        if (response.status === 200) history.push('/home');
-        else displayErrorMessage(response.status);
+      headers: { "Content-Type": "application/json" }
+    }).then(response => {
+      if (response.status === 200) history.push("/home");
+      else displayErrorMessage(response.status);
+    });
+  };
+
+  const redirectIfLoggedIn = () => {
+    fetch("/isLoggedIn")
+      .then(response => response.json())
+      .then(data => {
+        const { isLoggedIn } = data;
+        if (isLoggedIn) history.push("/home");
       })
-  }
+      .catch(err => console.error(err));
+  };
+
+  // useEffect with [] as the second argument behaves like "componentDidMount"
+  useEffect(redirectIfLoggedIn, []);
 
   const redirectIfLoggedIn = () => {
     fetch('/isLoggedIn')
@@ -84,22 +96,32 @@ const SignUp = ({ className, history }) => {
   return (
     <SignUpStyle>
       <h1>Welcome to Stream!</h1>
-      {screen === 'signup' &&
+      {screen === "signup" && (
         <>
           <label>Name</label> <input value={name} onChange={handleNameChange} />
         </>
-      }
+      )}
       <br />
-      <label>Email</label><input value={email} onChange={handleEmailChange} />
+      <label>Email</label>
+      <input value={email} onChange={handleEmailChange} />
       <br />
-      <label>Password</label><input value={password} onChange={handlePasswordChange} />
+      <label>Password</label>
+      <input value={password} onChange={handlePasswordChange} />
       <br />
-      <input type="button" value={screen === 'signup' ? 'Signup' : 'Login'} onClick={screen === 'signup' ? handleSignup : handleLogin} />
+      <input
+        type="button"
+        value={screen === "signup" ? "Signup" : "Login"}
+        onClick={screen === "signup" ? handleSignup : handleLogin}
+      />
       <br />
-      <span>{error !== '' && error}</span>
+      <span>{error !== "" && error}</span>
       <br />
-      {screen === 'signup' && <a onClick={() => setScreen('login')}>I already have an account</a>}
-      {screen === 'login' && <a onClick={() => setScreen('signup')}>Make an account</a>}
+      {screen === "signup" && (
+        <a onClick={() => setScreen("login")}>I already have an account</a>
+      )}
+      {screen === "login" && (
+        <a onClick={() => setScreen("signup")}>Make an account</a>
+      )}
     </SignUpStyle>
   );
 };
