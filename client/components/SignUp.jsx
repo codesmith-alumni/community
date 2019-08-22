@@ -104,10 +104,12 @@ const SignUp = ({ className, history }) => {
   };
 
   const redirectIfLoggedIn = () => {
+    console.log('checking if logged in');
     fetch("/isLoggedIn")
       .then(response => response.json())
       .then(data => {
         const { isLoggedIn } = data;
+        console.log('isLoggedIn', isLoggedIn);
         if (isLoggedIn) history.push("/home");
       })
       .catch(err => console.error(err));

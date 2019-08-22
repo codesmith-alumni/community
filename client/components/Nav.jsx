@@ -36,7 +36,14 @@ const NavMenuEntry = styled.li`
   /* border-right: 1px solid #ccc; */
 `;
 
-const Nav = ({ classNames, location }) => {
+const Nav = ({ classNames, location, history }) => {
+  const handleSignout = () => {
+    fetch('/auth/logout')
+      .then((response) => {
+        history.push('/')
+      })
+      .catch(err => console.log(err));
+  }
   return (
     <>
       <NavStyles id="Nav">
@@ -46,8 +53,9 @@ const Nav = ({ classNames, location }) => {
           </NavTitle>
         <NavMenuEntry>
           {location.pathname !== '/' &&
-            <button type="button">
-              <Link to="/SignOut">Sign out</Link>
+            <button type="button" onClick={handleSignout}>
+              Sign out
+              {/* <Link to="/SignOut">Sign out</Link> */}
             </button>
           }
         </NavMenuEntry>
