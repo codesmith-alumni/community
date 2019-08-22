@@ -1,8 +1,8 @@
 const authMiddleware = (req, res, next) => {
   // check the session... if it is good, great!
-  const safeRoutes = ['/', '/auth/login', '/signup'];
+  const safeRoutes = ["/", "/auth/login", "/signup", "/isLoggedIn"];
   if (!req.session.loggedIn && !safeRoutes.includes(req.originalUrl)) {
-    return res.redirect('/');
+    return res.redirect("/");
   }
   next();
   // check original URL... if it is not one of the protected routes, forward it along
