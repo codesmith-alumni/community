@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 
 const SignUpStyle = styled.div`
@@ -67,6 +67,19 @@ const SignUp = ({ className, history }) => {
         else displayErrorMessage(response.status);
       })
   }
+
+  const redirectIfLoggedIn = () => {
+    fetch('/isLoggedIn')
+      .then(response => response.json())
+      .then(data => {
+        const { isLoggedIn } = data;
+        if (isLoggedIn) history.push('/home');
+      })
+      .catch(err => console.error(err));
+  }
+
+  // useEffect with [] as the second argument behaves like "componentDidMount"
+  useEffect(redirectIfLoggedIn, []);
 
   return (
     <SignUpStyle>
