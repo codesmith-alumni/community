@@ -5,7 +5,6 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const RedisDB = require("./reddis-database");
 const postController = require("./controllers/postController");
-const signupController = require("./controllers/signupController");
 const loginController = require("./controllers/loginController");
 const authMiddleware = require("./middleware/authMiddleware");
 const userController = require("./controllers/userController");
@@ -18,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   express.static(path.resolve(__dirname, "../dist"), {
-    extensions: ["html", "css", "js"],
     index: false
   })
 );
