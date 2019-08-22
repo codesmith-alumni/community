@@ -1,25 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // const User = require('../models/User');
-const pool = require('../database');
-const userController = {};
-
-userController.create = (req, res) => {
-  const { name, email, password } = req.body;
-  const karma = 0;
-  const sql = 'INSERT INTO users (name, email, password, karma) VALUES ($1, $2, $3, $4) RETURNING *;';
-  const values = [name, email, password, karma];
-  pool.query(sql, values)
-    .then((response) => {
-      req.session.loggedIn = true;
-      res.status(200).send(JSON.stringify({
-        id: response.rows[0].id,
-        name: response.rows[0].name,
-        email: response.rows[0].email,
-      }));
+var database_1 = require("../database");
+var userController = {};
+userController.create = function (req, res) {
+    var _a = req.body, name = _a.name, email = _a.email, password = _a.password;
+    var karma = 0;
+    var sql = 'INSERT INTO users (name, email, password, karma) VALUES ($1, $2, $3, $4) RETURNING *;';
+    var values = [name, email, password, karma];
+    database_1.default.query(sql, values)
+        .then(function (response) {
+        req.session.loggedIn = true;
+        res.status(200).send(JSON.stringify({
+            id: response.rows[0].id,
+            name: response.rows[0].name,
+            email: response.rows[0].email,
+        }));
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).send(JSON.stringify('Error: User already exists'));
+        .catch(function (err) {
+        console.log(err);
+        res.status(400).send(JSON.stringify('Error: User already exists'));
     });
 };
-
-module.exports = userController;
+exports.default = userController;
+//# sourceMappingURL=userController.js.map

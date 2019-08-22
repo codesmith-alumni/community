@@ -1,15 +1,14 @@
-require("dotenv").config();
-const { Pool } = require("pg");
-const connectionString =
-  process.env.DB_ENV === "production"
-    ? process.env.DB_PROD
-    : process.env.DB_TEST;
-
-let ssl = false;
-if (process.env.DB_ENV === "production") {
-  ssl = true;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require('dotenv').config();
+var Pool = require('pg').Pool;
+var connectionString = process.env.DB_ENV === 'production' ?
+    process.env.DB_PROD :
+    process.env.DB_TEST;
+var ssl = false;
+if (process.env.DB_ENV === 'production') {
+    ssl = true;
 }
-
 /*
 Database set up with the following SQL:
 
@@ -32,7 +31,6 @@ Access in the CLI with psql [URI]
 View tables with /dt
 
 */
-
-const pool = new Pool({ connectionString, ssl: true });
-
-module.exports = pool;
+var pool = new Pool({ connectionString: connectionString, ssl: ssl });
+exports.default = pool;
+//# sourceMappingURL=database.js.map
