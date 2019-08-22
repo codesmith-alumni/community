@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var User = require('../models/User');
+var User_1 = require("../models/User");
 // sends an error code if no user found, otherwise sends user info and sets the
 // session
 // from there, send the requests properly
 var loginController = function (req, res) {
     var _a = req.body, email = _a.email, password = _a.password;
-    var user = new User('User', email, password);
+    var user = new User_1.default('User', email, password);
     user.validateUser()
         .then(function (result) {
         var userInfo = result.rows[0];

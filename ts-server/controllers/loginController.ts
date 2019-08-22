@@ -1,4 +1,4 @@
-const User = require('../models/User');
+import User from '../models/User';
 
 // sends an error code if no user found, otherwise sends user info and sets the
 // session
