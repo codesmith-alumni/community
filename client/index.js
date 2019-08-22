@@ -8,6 +8,8 @@ import SignUp from './components/SignUp.jsx';
 import SignOut from './components/SignOut.jsx';
 import FeedPage from './containers/FeedPage.jsx';
 import Nav from './components/Nav.jsx';
+import css from './src/reset.css';
+
 
 render(
   <Provider store={Store}>

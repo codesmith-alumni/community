@@ -17,17 +17,18 @@ CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   company VARCHAR(50),
-  content TEXT
+  content TEXT,
+  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );`
 
-function reset(){
-    return pool.query(sql)
-    // .then((response) => console.log('DB successfully reset', response));
+function reset() {
+  return pool.query(sql)
+  // .then((response) => console.log('DB successfully reset', response));
 }
 
-function end(){
-    pool.end()
-    // .then(() => console.log('Ended DB pool'));
+function end() {
+  pool.end()
+  // .then(() => console.log('Ended DB pool'));
 }
 
 module.exports = {
